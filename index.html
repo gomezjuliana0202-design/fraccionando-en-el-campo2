@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fraccionando en el Campo</title>
+<meta name="description" content="Recurso Educativo Digital para aprender fracciones, grados 4° y 5°, funciona sin internet.">
+<meta name="keywords" content="fracciones, matemáticas rurales, aprendizaje autónomo">
+<meta name="DC.title" content="Fraccionando en el Campo">
+<meta name="DC.creator" content="Fander Meller Torres Martínez">
+<meta name="DC.rights" content="CC BY-NC-SA 4.0">
+<meta name="DC.audience" content="Estudiantes de 4° y 5° de básica primaria">
+<meta name="DC.requirements" content="Navegador web moderno; no requiere internet">
+<style>
+:root{--tierra:#5b3a1e;--suelo:#8a5a2b;--trigo:#f1e3c4;--hoja:#2f6b3a;--brote:#9fd08a;--cielo:#fbf6ea;--tinta:#2b1d10;--error:#a8321f}
+*{box-sizing:border-box}
+html{font-size:16px}
+body{margin:0;font-family:"Trebuchet MS",Verdana,Arial,sans-serif;background:var(--cielo);color:var(--tinta);line-height:1.5;font-size:1.05rem}
+header{background:var(--tierra);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+header h1{font-size:1.15rem;margin:0}
+.off{background:var(--brote);color:#17391d;border-radius:20px;padding:4px 12px;font-size:.9rem;font-weight:bold}
+nav{display:flex;gap:6px;padding:10px;background:var(--trigo);overflow-x:auto;position:sticky;top:0;z-index:2}
+nav button{flex:1 0 auto;min-height:48px;border:2px solid var(--suelo);background:#fff;color:var(--tierra);border-radius:26px;padding:0 16px;font:inherit;font-weight:bold}
+nav button[aria-current="true"]{background:var(--hoja);color:#fff;border-color:var(--hoja)}
+main{max-width:720px;margin:0 auto;padding:16px}
+section{display:none}
+section.on{display:block}
+h2{color:var(--tierra);margin-top:4px}
+.btn{min-height:52px;border:0;border-radius:28px;background:var(--hoja);color:#fff;font:inherit;font-weight:bold;padding:0 26px;margin:6px 6px 6px 0}
+.btn.alt{background:var(--suelo)}
+.btn.line{background:#fff;color:var(--tierra);border:2px solid var(--suelo)}
+.caja{background:#fff;border:2px solid var(--trigo);border-radius:14px;padding:14px;margin:12px 0}
+.hero{text-align:center;padding:18px 8px}
+.hero svg{max-width:260px;width:80%}
+.circ{width:60px;height:60px;border-radius:50%;border:0;background:var(--suelo);color:#fff;font-size:1.9rem;font-weight:bold;margin:12px}
+.ctl{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
+.ctl b{min-width:48px;text-align:center;font-size:1.6rem}
+.fr{font-size:2.4rem;font-weight:bold;text-align:center;color:var(--hoja)}
+.fr small{display:block;font-size:.95rem;color:var(--tierra);font-weight:normal}
+.parc{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;max-width:360px;margin:8px auto}
+.parc i{display:block;border-radius:6px;border:2px solid var(--suelo);background:var(--trigo)}
+.parc i.v{background:var(--hoja);border-color:#1f4a28}
+.resp{display:flex;align-items:center;gap:10px;justify-content:center;margin:10px 0}
+.resp input{width:84px;height:56px;font-size:1.5rem;text-align:center;border:2px solid var(--suelo);border-radius:10px;font-family:inherit}
+.resp .raya{width:22px;height:0;border-top:4px solid var(--tierra);display:none}
+.pila{display:flex;flex-direction:column;gap:6px}
+.msg{min-height:1.6em;font-weight:bold;text-align:center;margin:8px 0}
+.msg.ok{color:var(--hoja)}.msg.mal{color:var(--error)}
+.op{display:block;width:100%;text-align:left;min-height:52px;margin:6px 0;border:2px solid var(--suelo);background:#fff;border-radius:12px;font:inherit;padding:8px 14px}
+.op.ok{background:#dcf1d2;border-color:var(--hoja)}.op.mal{background:#f7d9d3;border-color:var(--error)}
+button:focus-visible,input:focus-visible{outline:4px solid #e0a100;outline-offset:2px}
+footer{text-align:center;font-size:.85rem;padding:16px;color:var(--suelo)}
+@media (prefers-reduced-motion:no-preference){.parc i{transition:background .25s}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Fraccionando en el Campo</h1>
+  <span class="off" role="status">Funciona sin internet</span>
+</header>
+<nav aria-label="Menú principal">
+  <button data-s="inicio" aria-current="true">Inicio</button>
+  <button data-s="explora">Explora</button>
+  <button data-s="lab">Laboratorio</button>
+  <button data-s="retos">Retos</button>
+  <button data-s="auto">Autoevaluación</button>
+</nav>
+<main>
+
+<section id="inicio" class="on">
+  <div class="hero">
+    <svg viewBox="0 0 200 140" role="img" aria-label="Parcela de cultivo dividida en cuatro partes, tres sembradas">
+      <rect x="10" y="20" width="180" height="110" rx="10" fill="#f1e3c4" stroke="#8a5a2b" stroke-width="4"/>
+      <rect x="14" y="24" width="86" height="51" fill="#2f6b3a"/><rect x="104" y="24" width="82" height="51" fill="#2f6b3a"/>
+      <rect x="14" y="79" width="86" height="47" fill="#2f6b3a"/><rect x="104" y="79" width="82" height="47" fill="#f1e3c4"/>
+      <text x="145" y="108" font-size="26" text-anchor="middle" fill="#5b3a1e">?</text>
+    </svg>
+    <h2>¡Bienvenido a la parcela!</h2>
+    <p>Aprende qué es una fracción sembrando, repartiendo leche y cosechando.</p>
+    <button class="btn" data-go="explora">Comenzar actividad</button>
+    <button class="btn line" onclick="leer('Bienvenido a la parcela. Aprende qué es una fracción sembrando, repartiendo leche y cosechando.')">🔊 Escuchar</button>
+  </div>
+</section>
+
+<section id="explora">
+  <h2>1. Explora: ¿qué es una fracción?</h2>
+  <div class="caja">
+    <p>Una fracción es una <b>parte de un todo</b>. Don José tiene una parcela dividida en partes iguales.</p>
+    <div class="parc" id="demo"></div>
+    <div class="fr" id="demoF"></div>
+    <p>El número de abajo, el <b>denominador</b>, dice en cuántas partes iguales se dividió la parcela. El de arriba, el <b>numerador</b>, dice cuántas partes están sembradas.</p>
+    <button class="btn alt" id="otra">Ver otra parcela</button>
+    <button class="btn line" onclick="leer('Una fracción es una parte de un todo. El número de abajo dice en cuántas partes iguales se dividió la parcela. El número de arriba dice cuántas partes están sembradas.')">🔊 Escuchar</button>
+  </div>
+</section>
+
+<section id="lab">
+  <h2>2. Laboratorio de fracciones</h2>
+  <p>Cambia las partes de la parcela y mira cómo cambia la fracción.</p>
+  <div class="caja">
+    <div class="parc" id="labP" aria-live="polite"></div>
+    <div class="fr" id="labF"></div>
+    <div class="ctl"><button class="circ" id="dm" aria-label="Quitar una parte total">−</button><b id="dv">4</b><button class="circ" id="dp" aria-label="Agregar una parte total">+</button></div>
+    <p style="text-align:center;margin:0">Partes totales (denominador)</p>
+    <div class="ctl"><button class="circ" id="nm" aria-label="Quitar una parte sembrada">−</button><b id="nv">3</b><button class="circ" id="np" aria-label="Agregar una parte sembrada">+</button></div>
+    <p style="text-align:center;margin:0">Partes sembradas (numerador)</p>
+  </div>
+</section>
+
+<section id="retos">
+  <h2>3. Retos del campo</h2>
+  <div class="caja">
+    <p id="rEnun" style="font-weight:bold"></p>
+    <div class="parc" id="rP"></div>
+    <div class="resp"><input id="rN" type="number" inputmode="numeric" min="0" aria-label="Numerador"><span class="raya" style="display:inline-block"></span><input id="rD" type="number" inputmode="numeric" min="1" aria-label="Denominador"></div>
+    <div class="msg" id="rM" role="status"></div>
+    <div style="text-align:center">
+      <button class="btn" id="rV">Revisar</button>
+      <button class="btn alt" id="rR">Intentar de nuevo</button>
+      <button class="btn line" id="rS">Siguiente reto</button>
+      <button class="btn line" id="rL">🔊 Leer en voz alta</button>
+    </div>
+  </div>
+</section>
+
+<section id="auto">
+  <h2>4. Autoevaluación</h2>
+  <div class="caja">
+    <p id="aQ" style="font-weight:bold"></p>
+    <div id="aO"></div>
+    <div class="msg" id="aM" role="status"></div>
+    <button class="btn alt" id="aS" style="display:none">Siguiente</button>
+  </div>
+</section>
+
+</main>
+<footer>Recurso Educativo Digital · Licencia CC BY-NC-SA 4.0 · Versión 2.0</footer>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var ctx=null;
+  function tono(ok){
+    try{
+      ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();
+      var o=ctx.createOscillator(),g=ctx.createGain();
+      o.connect(g);g.connect(ctx.destination);
+      o.frequency.value=ok?660:200;g.gain.value=.08;
+      o.start();o.stop(ctx.currentTime+(ok?.18:.3));
+    }catch(e){}
+  }
+  window.leer=function(t){
+    try{
+      if(!window.speechSynthesis){return}
+      speechSynthesis.cancel();
+      var u=new SpeechSynthesisUtterance(t);u.lang="es-CO";u.rate=.9;
+      speechSynthesis.speak(u);
+    }catch(e){}
+  };
+
+  function ir(id){
+    var s=document.querySelectorAll("section");
+    for(var i=0;i<s.length;i++){s[i].className=s[i].id===id?"on":""}
+    var b=document.querySelectorAll("nav button");
+    for(var j=0;j<b.length;j++){b[j].setAttribute("aria-current",b[j].getAttribute("data-s")===id?"true":"false")}
+    window.scrollTo(0,0);
+  }
+  var nb=document.querySelectorAll("nav button");
+  for(var k=0;k<nb.length;k++){nb[k].onclick=function(){ir(this.getAttribute("data-s"))}}
+  var gb=document.querySelectorAll("[data-go]");
+  for(var m=0;m<gb.length;m++){gb[m].onclick=function(){ir(this.getAttribute("data-go"))}}
+
+  function dibuja(el,n,d){
+    el.innerHTML="";
+    var cols=d<=4?d:(d<=8?4:5), ancho=Math.floor(320/cols)-4;
+    for(var i=0;i<d;i++){
+      var c=document.createElement("i");
+      c.style.width=ancho+"px";c.style.height=Math.max(36,ancho*.7)+"px";
+      if(i<n)c.className="v";
+      el.appendChild(c);
+    }
+  }
+  function fr(n,d){return '<span>'+n+'/'+d+'</span><small>'+n+' de '+d+' partes sembradas</small>'}
+
+  // Explora
+  var ej=[[3,4],[1,2],[2,5],[5,8],[3,6]],ie=0;
+  function demo(){var e=ej[ie];dibuja($("demo"),e[0],e[1]);$("demoF").innerHTML=fr(e[0],e[1])}
+  $("otra").onclick=function(){ie=(ie+1)%ej.length;demo()};
+  demo();
+
+  // Laboratorio
+  var d=4,n=3;
+  function lab(){
+    if(n>d)n=d;if(n<0)n=0;
+    $("dv").textContent=d;$("nv").textContent=n;
+    dibuja($("labP"),n,d);$("labF").innerHTML=fr(n,d);
+  }
+  $("dp").onclick=function(){if(d<12){d++;lab()}};
+  $("dm").onclick=function(){if(d>1){d--;lab()}};
+  $("np").onclick=function(){if(n<d){n++;lab()}};
+  $("nm").onclick=function(){if(n>0){n--;lab()}};
+  lab();
+
+  // Retos
+  var R=[
+    {t:"Don José sembró maíz en 3 de las 6 partes de su parcela. ¿Qué fracción representa?",n:3,d:6},
+    {t:"Doña Rosa ordeñó una vaca y llenó 1 de 4 botellas iguales de leche. ¿Qué fracción de botellas llenó?",n:1,d:4},
+    {t:"En el huerto hay 8 surcos y 5 tienen frijol. ¿Qué fracción de surcos tienen frijol?",n:5,d:8},
+    {t:"Una cesta tiene 10 naranjas y se vendieron 7. ¿Qué fracción se vendió?",n:7,d:10},
+    {t:"El lote se dividió en 5 partes iguales y se cosecharon 2. ¿Qué fracción se cosechó?",n:2,d:5}
+  ],ir_=0;
+  function reto(){
+    var r=R[ir_];$("rEnun").textContent=r.t;
+    dibuja($("rP"),r.n,r.d);
+    // se muestra el dibujo solo con el total, para que el estudiante cuente
+    var q=$("rP").children;for(var i=0;i<q.length;i++){q[i].className=i<r.n?"v":""}
+    $("rN").value="";$("rD").value="";$("rM").textContent="";$("rM").className="msg";
+  }
+  $("rV").onclick=function(){
+    var r=R[ir_],a=parseInt($("rN").value,10),b=parseInt($("rD").value,10);
+    if(isNaN(a)||isNaN(b)){$("rM").className="msg mal";$("rM").textContent="Escribe el numerador y el denominador.";return}
+    if(a===r.n&&b===r.d){$("rM").className="msg ok";$("rM").textContent="¡Muy bien! "+r.n+"/"+r.d+" es correcto.";tono(true)}
+    else{$("rM").className="msg mal";$("rM").textContent="¡Inténtalo de nuevo! Cuenta las partes sembradas y las partes totales.";tono(false)}
+  };
+  $("rR").onclick=function(){$("rN").value="";$("rD").value="";$("rM").textContent="";$("rN").focus()};
+  $("rS").onclick=function(){ir_=(ir_+1)%R.length;reto()};
+  $("rL").onclick=function(){leer(R[ir_].t)};
+  reto();
+
+  // Autoevaluación
+  var Q=[
+    {q:"En la fracción 3/4, ¿qué dice el número de abajo?",o:["Las partes sembradas","Las partes totales","El precio"],c:1},
+    {q:"Una parcela tiene 5 partes iguales y 2 están sembradas. ¿Qué fracción es?",o:["5/2","2/5","2/7"],c:1},
+    {q:"¿Cuál fracción representa la mitad de una parcela?",o:["1/2","1/4","2/1"],c:0}
+  ],qi=0,pts=0,resp=false;
+  function pregunta(){
+    resp=false;$("aM").textContent="";$("aM").className="msg";$("aS").style.display="none";
+    if(qi>=Q.length){
+      $("aQ").textContent="Terminaste: acertaste "+pts+" de "+Q.length+".";
+      $("aO").innerHTML="";
+      $("aS").textContent="Empezar de nuevo";$("aS").style.display="inline-block";
+      $("aS").onclick=function(){qi=0;pts=0;$("aS").textContent="Siguiente";$("aS").onclick=sig;pregunta()};
+      return;
+    }
+    var p=Q[qi];$("aQ").textContent=(qi+1)+" de "+Q.length+". "+p.q;$("aO").innerHTML="";
+    p.o.forEach(function(t,i){
+      var b=document.createElement("button");b.className="op";b.textContent=t;
+      b.onclick=function(){
+        if(resp)return;resp=true;
+        var ok=i===p.c;if(ok)pts++;
+        b.className="op "+(ok?"ok":"mal");
+        $("aM").className="msg "+(ok?"ok":"mal");
+        $("aM").textContent=ok?"¡Correcto!":"Casi. La respuesta es: "+p.o[p.c];
+        tono(ok);$("aS").style.display="inline-block";
+      };
+      $("aO").appendChild(b);
+    });
+  }
+  function sig(){qi++;pregunta()}
+  $("aS").onclick=sig;
+  pregunta();
+})();
+</script>
+</body>
+</html>
